@@ -1,3 +1,5 @@
+import { extractImage } from './utils';
+
 export class MyComponent {
 
   init() {
@@ -7,11 +9,18 @@ export class MyComponent {
   }
 
   updateItems({ records }) {
-    this.update({ items: records.map(({ id }) => id) });
+    this.update({
+      items: records.map(({ id }) => id)
+    });
   }
 
   alertUser(e) {
     const id = e.target.innerText;
-    console.log(this.flux.results);
+    const found = this.flux.results.records.find((record) => record.id === id);
+    if (found) {
+      this.update({
+        currentImage: extractImage(found.allMeta)
+      });
+    }
   }
 }

@@ -1,5 +1,6 @@
 import './test.tag.html';
 import { searchandiser } from 'searchandiser-ui';
+import { extractImage } from './utils';
 
 searchandiser({
   customerId: 'gbipocindigo',
@@ -13,13 +14,9 @@ searchandiser({
     price: 'price',
     image: 'genImage',
 
-    _transform: (meta) => {
-      const imageId = ((meta.variants || [])[0] || {}).ISBN;
-
-      return Object.assign(meta, {
-        genImage: `https://dynamic.indigoimages.ca/books/${imageId}.jpg?width=140&quality=85&maxheight=200`
-      });
-    },
+    _transform: (meta) => Object.assign(meta, {
+      genImage: extractImage(meta)
+    }),
     // define your data structure here!
   },
 
