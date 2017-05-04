@@ -8,8 +8,11 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js$/,
-      exclude: path.resolve('node_modules'),
-      loader: 'babel-loader'
+      loader: 'babel-loader',
+      exclude: /node_modules\/(?!oget)/,
+    }, {
+      test: /\.tag\.html$/,
+      loader: 'riot-tag-loader'
     }, {
       test: /\.datauri$/,
       loader: 'raw-loader'

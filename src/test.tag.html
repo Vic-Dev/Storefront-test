@@ -1,0 +1,13 @@
+<bt-test>
+  <ul each="{ item in items }">
+    <li>
+      <a href="#" onclick="{ alertUser }">{ item }</a>
+    </li>
+  </ul>
+  <img src="{ currentImage }"/>
+
+  <script>
+    var Component = require('./test').MyComponent;
+    this._mixin(Component);
+  </script>
+</bt-test>
